@@ -5,6 +5,7 @@ const COLORS = {
   borderColor: "#EBEBEB",
   labelColor: "#C2C2C2",
   primaryColor: "#1BA0EB",
+  lightPrimaryColor: "#0ECFFA",
   googleButtonColor: "#CDCDCD",
 };
 
