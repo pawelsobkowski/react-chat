@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import COLORS from "../../colors";
-import { ReactComponent as Icon } from "../../images/google.svg";
+import COLORS from "../colors";
+import { ReactComponent as Icon } from "../images/google.svg";
+import { Eye, EyeOff } from "react-feather";
 
 const Container = styled.div`
   width: 100%;
@@ -38,6 +39,7 @@ const InputContainer = styled.div`
   width: 100%;
   position: relative;
   margin: 1em 0;
+  text-align: end;
 `;
 
 const Label = styled.label`
@@ -77,7 +79,15 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: opacity 0.25s ease;
   cursor: pointer;
+  &:first-of-type {
+    margin-top: 1.5em;
+  }
+  &:focus,
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 const GoogleIcon = styled(Icon)`
@@ -86,10 +96,42 @@ const GoogleIcon = styled(Icon)`
   margin-right: 0.5em;
 `;
 
+const EyeIcon = styled(Eye)`
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  cursor: pointer;
+`;
+
+const EyeOffIcon = styled(EyeOff)`
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  cursor: pointer;
+`;
+
 const Link = styled.a`
   color: ${COLORS.primaryColor};
   text-decoration: none;
   cursor: pointer;
+  transition: color 0.25s ease;
+  &:focus,
+  &:hover {
+    color: ${COLORS.lightPrimaryColor};
+  }
+`;
+
+const PasswordRecovery = styled.a`
+  font-size: 0.75em;
+  font-weight: 500;
+  color: ${COLORS.black063};
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.25s ease;
+  &:focus,
+  &:hover {
+    color: ${COLORS.lightPrimaryColor};
+  }
 `;
 
 const Styled = {
@@ -103,7 +145,10 @@ const Styled = {
   Input,
   Button,
   GoogleIcon,
+  EyeIcon,
+  EyeOffIcon,
   Link,
+  PasswordRecovery,
 };
 
 export default Styled;
