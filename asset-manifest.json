@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/react-chat/static/css/main.8e53cb4c.chunk.css",
+    "main.js": "/react-chat/static/js/main.8e00a15c.chunk.js",
+    "main.js.map": "/react-chat/static/js/main.8e00a15c.chunk.js.map",
+    "runtime-main.js": "/react-chat/static/js/runtime-main.6fc5081d.js",
+    "runtime-main.js.map": "/react-chat/static/js/runtime-main.6fc5081d.js.map",
+    "static/js/2.ebf91c0e.chunk.js": "/react-chat/static/js/2.ebf91c0e.chunk.js",
+    "static/js/2.ebf91c0e.chunk.js.map": "/react-chat/static/js/2.ebf91c0e.chunk.js.map",
+    "index.html": "/react-chat/index.html",
+    "precache-manifest.60993b940282363517b057e6369d8b3d.js": "/react-chat/precache-manifest.60993b940282363517b057e6369d8b3d.js",
+    "service-worker.js": "/react-chat/service-worker.js",
+    "static/css/main.8e53cb4c.chunk.css.map": "/react-chat/static/css/main.8e53cb4c.chunk.css.map",
+    "static/js/2.ebf91c0e.chunk.js.LICENSE.txt": "/react-chat/static/js/2.ebf91c0e.chunk.js.LICENSE.txt",
+    "static/media/google.02d31de0.svg": "/react-chat/static/media/google.02d31de0.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6fc5081d.js",
+    "static/js/2.ebf91c0e.chunk.js",
+    "static/css/main.8e53cb4c.chunk.css",
+    "static/js/main.8e00a15c.chunk.js"
+  ]
+}
