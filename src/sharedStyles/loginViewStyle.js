@@ -50,13 +50,15 @@ const Label = styled.label`
   left: 16px;
   background-color: ${COLORS.backgroundColor};
   font-size: 0.875em;
-  color: ${COLORS.labelColor};
+  color: ${(props) =>
+    props.error === true ? COLORS.error : COLORS.labelColor};
 `;
 
 const Input = styled.input`
   width: 100%;
   height: 40px;
-  border: 1px solid ${COLORS.borderColor};
+  border: 1px solid
+    ${(props) => (props.error === true ? COLORS.error : COLORS.borderColor)};
   border-radius: 0.625em;
   padding-left: 1em;
   &:focus {
@@ -134,6 +136,13 @@ const PasswordRecovery = styled.a`
   }
 `;
 
+const ErrorMessage = styled.p`
+  font-size: 0.9em;
+  color: ${COLORS.error};
+  margin-top: 0.25em;
+  margin-bottom: 0;
+`;
+
 const Styled = {
   Container,
   Header,
@@ -149,6 +158,7 @@ const Styled = {
   EyeOffIcon,
   Link,
   PasswordRecovery,
+  ErrorMessage,
 };
 
 export default Styled;
