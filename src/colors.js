@@ -7,6 +7,7 @@ const COLORS = {
   primaryColor: "#1BA0EB",
   lightPrimaryColor: "#0ECFFA",
   googleButtonColor: "#CDCDCD",
+  error: "#CC0000",
 };
 
 export default COLORS;
