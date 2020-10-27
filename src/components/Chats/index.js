@@ -1,5 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import Styled from "./style";
+import Header from "../../parts/Header";
+import Navigation from "../../parts/Navigation";
 
 const Chats = () => {
   const history = useHistory();
@@ -9,10 +12,10 @@ const Chats = () => {
     history.push("/");
   };
   return (
-    <div>
-      <h1>Chats</h1>
-      <button onClick={logout}>Logout</button>
-    </div>
+    <Styled.Container>
+      <Header title={"Messages"} logout={logout} />
+      <Navigation />
+    </Styled.Container>
   );
 };
 
