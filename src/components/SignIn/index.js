@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import Styled from "../../sharedStyles/loginViewStyle";
 import axios from "axios";
 import { useFormik } from "formik";
+import { useHistory } from "react-router-dom";
 
 const SignIn = ({ changeLoginView }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [error, setError] = useState("");
+  const [isSubmit, setIsSubmit] = useState(false);
+  const history = useHistory();
 
   const validate = (values) => {
     const errors = {};
@@ -35,13 +38,16 @@ const SignIn = ({ changeLoginView }) => {
     onSubmit: async (values) => {
       try {
         setError("");
+        setIsSubmit(true);
         const res = await axios.post(
           "http://localhost:3001/auth/signIn",
           values
         );
         localStorage.setItem("token", res.data.token);
+        history.push("/chats");
       } catch (err) {
         setError(err.response.data.message);
+        setIsSubmit(false);
       }
     },
   });
@@ -105,8 +111,10 @@ const SignIn = ({ changeLoginView }) => {
           </Styled.PasswordRecovery>
         </Styled.InputContainer>
         {error && <Styled.ErrorMessage>{error}</Styled.ErrorMessage>}
-        <Styled.Button type="submit">Sign in</Styled.Button>
-        <Styled.Button type="submit" buttonType={"Google"}>
+        <Styled.Button type="submit" disabled={isSubmit}>
+          {isSubmit ? "Logging in..." : "Sign in"}
+        </Styled.Button>
+        <Styled.Button type="submit" buttonType={"Google"} disabled={true}>
           <Styled.GoogleIcon />
           Sign in with Google
         </Styled.Button>
