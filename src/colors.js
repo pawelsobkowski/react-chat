@@ -9,6 +9,7 @@ const COLORS = {
   googleButtonColor: "#CDCDCD",
   error: "#CC0000",
   transparentBgColor: "rgba(255,255,255,0.87)",
+  transparentSearchBgColor: "rgba(230,230,230,0.87)",
 };
 
 export default COLORS;
