@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 const SignUp = ({ changeLoginView }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [error, setError] = useState("");
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const validate = (values) => {
     const errors = {};
@@ -39,13 +40,16 @@ const SignUp = ({ changeLoginView }) => {
     onSubmit: async (values) => {
       try {
         setError("");
+        setIsSubmit(true);
         const res = await axios.post(
           "http://localhost:3001/auth/signUp",
           values
         );
         console.log(res);
       } catch (err) {
+        console.log(err.response);
         setError(err.response.data.errors[0].msg);
+        setIsSubmit(false);
       }
     },
   });
@@ -123,7 +127,9 @@ const SignUp = ({ changeLoginView }) => {
           )}
         </Styled.InputContainer>
         {error && <Styled.ErrorMessage>{error}</Styled.ErrorMessage>}
-        <Styled.Button type="submit">Sign up</Styled.Button>
+        <Styled.Button type="submit" disabled={isSubmit}>
+          {isSubmit ? "Processing..." : "Sign up"}
+        </Styled.Button>
         <Styled.Button type="submit" buttonType={"Google"}>
           <Styled.GoogleIcon />
           Sign up with Google
