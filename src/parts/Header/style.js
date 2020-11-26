@@ -36,10 +36,16 @@ const Title = styled.h1`
 const SearchBar = styled.div`
   width: 100%;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 3;
+  transform: ${(props) => props.isSearchActive && "translateY(-150%)"};
+  transition: transform 500ms ease;
 `;
 
 const Search = styled.input`
-  width: 100%;
+  width: ${(props) => (props.isSearchActive ? "90%" : "100%")};
   border: none;
   padding: 0.55em 0.25em 0.5em 2em;
   border-radius: 0.75em;
@@ -55,6 +61,14 @@ const SearchIcon = styled(Icon)`
   stroke: ${COLORS.black063};
 `;
 
+const CancelButton = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: 500;
+`;
+
 const Styled = {
   Header,
   TopSection,
@@ -62,6 +76,7 @@ const Styled = {
   SearchBar,
   Search,
   SearchIcon,
+  CancelButton,
 };
 
 export default Styled;
