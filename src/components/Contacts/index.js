@@ -19,8 +19,8 @@ const fetchInvitations = async (userId) => {
 
 const Contacts = () => {
   const history = useHistory();
-  const [users, setUsers] = useState(null);
-  const [invitations, setInvitations] = useState([]);
+  const [friends, setFriends] = useState(null);
+  const [invitations, setInvitations] = useState(null);
   const { userId } = parseJwt();
   const [isFriendsSectionVisible, setIsFriendsSectionVisible] = useState(true);
   const [
@@ -29,7 +29,7 @@ const Contacts = () => {
   ] = useState(true);
 
   useEffect(() => {
-    fetchFriends(userId).then(setUsers);
+    fetchFriends(userId).then(setFriends);
     fetchInvitations(userId).then(setInvitations);
   }, [userId]);
 
@@ -43,7 +43,7 @@ const Contacts = () => {
       id,
       userId,
     });
-    fetchFriends(userId).then(setUsers);
+    fetchFriends(userId).then(setFriends);
     fetchInvitations(userId).then(setInvitations);
   };
 
@@ -52,19 +52,19 @@ const Contacts = () => {
       id,
       userId,
     });
-    fetchFriends(userId).then(setUsers);
+    fetchFriends(userId).then(setFriends);
     fetchInvitations(userId).then(setInvitations);
   };
 
   const showFriends = () =>
-    users.length > 0
-      ? users.map((item) => (
+    friends.length > 0
+      ? friends.map((item) => (
           <Styled.ListElement key={item._id}>
             <Avatar photoUrl={item.photoUrl} />
             {item.fullName}
           </Styled.ListElement>
         ))
-      : "Lack of messages";
+      : "No friends";
 
   const showInvitations = () =>
     invitations.length > 0
@@ -94,7 +94,7 @@ const Contacts = () => {
         </Styled.SectionHeader>
         {isInvitationsSectionVisible && (
           <Styled.List>
-            {users === null ? "Loading..." : showInvitations()}
+            {invitations === null ? "Loading..." : showInvitations()}
           </Styled.List>
         )}
       </Styled.Section>
@@ -106,7 +106,7 @@ const Contacts = () => {
         </Styled.SectionHeader>
         {isFriendsSectionVisible && (
           <Styled.List>
-            {users === null ? "Loading..." : showFriends()}
+            {friends === null ? "Loading..." : showFriends()}
           </Styled.List>
         )}
       </Styled.Section>
