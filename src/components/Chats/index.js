@@ -6,7 +6,6 @@ import Navigation from "../../parts/Navigation";
 import Avatar from "../../parts/Avatar";
 import axios from "axios";
 import parseJwt from "../../functions/parseJWT";
-import { Link } from "react-router-dom";
 
 const Chats = () => {
   const history = useHistory();
@@ -15,7 +14,7 @@ const Chats = () => {
 
   useEffect(() => {
     const fetchChats = async () => {
-      const res = await axios.get(`http://localhost:3001/chat/${userId}`);
+      const res = await axios.get(`http://localhost:3001/chat/user/${userId}`);
       const chatList = res.data.map((item) => {
         const [person] = item.participants.filter(
           (user) => user._id !== userId
@@ -28,7 +27,6 @@ const Chats = () => {
           message,
         };
       });
-      console.log(chatList);
       setChats(chatList);
     };
     fetchChats();
