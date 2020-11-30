@@ -1,6 +1,6 @@
 import React from "react";
 import Styled from "./style";
-import { MoreVertical, ArrowLeft } from "react-feather";
+import { MoreVertical, ChevronLeft } from "react-feather";
 import { useHistory } from "react-router-dom";
 
 const ChatHeader = ({ title }) => {
@@ -13,7 +13,7 @@ const ChatHeader = ({ title }) => {
   return (
     <Styled.Header>
       <Styled.HeaderButton>
-        <ArrowLeft onClick={goBack} />
+        <ChevronLeft onClick={goBack} />
       </Styled.HeaderButton>
       <Styled.Title>{title && title}</Styled.Title>
       <Styled.HeaderButton>
