@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Header = styled.header`
   width: 100%;
-  padding: 0.5em 1em;
+  padding: 0.5em;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,6 +14,7 @@ const HeaderButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0;
 `;
 
 const Title = styled.h3`
