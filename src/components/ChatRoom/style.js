@@ -9,15 +9,17 @@ const Container = styled.div`
   justify-content: flex-start;
   align-items: center;
   padding: 0;
+  overflow: hidden;
 `;
 
 const List = styled.ul`
   width: 100%;
   list-style: none;
   margin: 0;
-  padding: 0.5em 1em;
+  padding: 3em 1em 4em 1em;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 `;
 
 const ListElement = styled.li`
