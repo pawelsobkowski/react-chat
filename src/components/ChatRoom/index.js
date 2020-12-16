@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ChatHeader from "../../parts/ChatHeader";
 import MessageInput from "../../parts/MessageInput";
 import { useParams } from "react-router-dom";
@@ -14,6 +14,7 @@ const ChatRoom = () => {
   const [participants, setParticipants] = useState([]);
   const { id } = useParams();
   const { userId } = parseJwt();
+  const listRef = useRef(null);
   const ENDPOINT = "http://localhost:3001";
 
   useEffect(() => {
@@ -41,6 +42,14 @@ const ChatRoom = () => {
     });
   }, [messages]);
 
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, []);
+
   const getFriendName = () => {
     const result = participants.filter((item) => item._id !== userId);
     const [friend] = result;
@@ -51,9 +60,17 @@ const ChatRoom = () => {
     return id === userId;
   };
 
+  const scrollToBottom = () => {
+    const elements = listRef.current.children;
+    const lastElement = elements[elements.length - 1];
+    if (lastElement !== undefined) {
+      listRef.current.scroll(0, lastElement.getBoundingClientRect().top);
+    }
+  };
+
   const showMessages = () =>
     messages.length > 0
-      ? messages.map((item) => (
+      ? messages.map((item, index) => (
           <Styled.ListElement
             key={item._id}
             isUserMessage={isUserMessage(item.userId)}>
@@ -67,7 +84,7 @@ const ChatRoom = () => {
   return (
     <Styled.Container>
       <ChatHeader title={getFriendName()} />
-      <Styled.List>
+      <Styled.List ref={listRef}>
         {messages === null ? "Loading..." : showMessages()}
       </Styled.List>
       <MessageInput socket={socket} roomId={id} userId={userId} />
