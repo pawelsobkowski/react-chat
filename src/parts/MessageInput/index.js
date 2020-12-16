@@ -22,8 +22,13 @@ const MessageInput = ({ socket, roomId, userId }) => {
         placeholder="Message..."
         value={messageInput}
         onChange={(e) => setMessageInput(e.currentTarget.value)}
+        onKeyUp={(e) =>
+          e.key === "Enter" && messageInput ? sendMessage() : null
+        }
       />
-      <Styled.SendButton onClick={sendMessage}>
+      <Styled.SendButton
+        onClick={sendMessage}
+        disabled={messageInput.length === 0}>
         <ArrowUp />
       </Styled.SendButton>
     </Styled.Container>
