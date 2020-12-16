@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import COLORS from "../../colors";
 
 const Header = styled.header`
   width: 100%;
@@ -6,6 +7,11 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(5px);
+  background-color: ${COLORS.transparentBgColor};
 `;
 
 const HeaderButton = styled.button`
