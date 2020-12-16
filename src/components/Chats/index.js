@@ -48,7 +48,7 @@ const Chats = () => {
                 {item.message !== undefined && (
                   <>
                     <Styled.Message>{`${
-                      item.message.userId === userId && "You: "
+                      item.message.userId === userId ? "You: " : ""
                     }${item.message.content}`}</Styled.Message>
                     <Styled.Timestamp>
                       {new Date(item.message.timestamp).toLocaleTimeString()}
