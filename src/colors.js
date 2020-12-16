@@ -8,7 +8,7 @@ const COLORS = {
   lightPrimaryColor: "#0ECFFA",
   googleButtonColor: "#CDCDCD",
   error: "#CC0000",
-  transparentBgColor: "rgba(255,255,255,0.87)",
+  transparentBgColor: "rgba(255,255,255,0.67)",
   transparentSearchBgColor: "rgba(230,230,230,0.87)",
 };
 
