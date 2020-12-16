@@ -3,12 +3,13 @@ import COLORS from "../../colors";
 
 const Container = styled.section`
   width: 100%;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   display: flex;
   align-items: center;
   padding: 0.5em;
+  backdrop-filter: blur(5px);
   background-color: ${COLORS.transparentBgColor};
 `;
 
@@ -17,7 +18,7 @@ const Input = styled.input`
   height: 38px;
   border: 1px solid ${COLORS.black063};
   border-radius: 2em;
-  /* background-color: ${COLORS.transparentSearchBgColor}; */
+  background-color: ${COLORS.transparentBgColor};
   padding: 0.5em 2.5em 0.5em 1em;
   font-size: 1em;
   outline: none;
