@@ -6,6 +6,8 @@ import ProtectedRoute from "./privateRoutes/protectedRoute";
 import AuthRoute from "./privateRoutes/authRoute";
 import Chats from "./components/Chats";
 import Contacts from "./components/Contacts";
+import ChatRoom from "./components/ChatRoom";
+import Profile from "./components/Profile";
 
 function App() {
   const [loginView, setLoginView] = useState("signUp");
@@ -21,6 +23,8 @@ function App() {
         </AuthRoute>
         <ProtectedRoute exact path="/chats" component={Chats} />
         <ProtectedRoute exact path="/contacts" component={Contacts} />
+        <ProtectedRoute exact path="/m/:id" component={ChatRoom} />
+        <ProtectedRoute exact path="/profile" component={Profile} />
       </Switch>
     </HashRouter>
   );
