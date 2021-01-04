@@ -5,18 +5,18 @@ import COLORS from "../../colors";
 const avatarSize = 48;
 
 const Img = styled.img`
-  width: ${avatarSize}px;
-  height: ${avatarSize}px;
-  border-radius: 2em;
+  width: ${(props) => (props.size ? `${props.size}px` : `${avatarSize}px`)};
+  height: ${(props) => (props.size ? `${props.size}px` : `${avatarSize}px`)};
+  border-radius: 100%;
   margin-right: 1em;
 `;
 
 const UserIcon = styled(Icon)`
-  width: ${avatarSize}px;
-  height: ${avatarSize}px;
+  width: ${(props) => (props.size ? `${props.size}px` : `${avatarSize}px`)};
+  height: ${(props) => (props.size ? `${props.size}px` : `${avatarSize}px`)};
   stroke: ${COLORS.backgroundColor};
   background-color: ${COLORS.googleButtonColor};
-  border-radius: 2em;
+  border-radius: 100%;
   margin-right: 1em;
 `;
 
