@@ -20,6 +20,22 @@ const Chats = () => {
           (user) => user._id !== userId
         );
         const [message] = item.messages.slice(-1);
+        const currentDate = new Date();
+        const currentDay = currentDate.toLocaleDateString("default", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+        });
+        const timestamp = new Date(message.timestamp);
+        const messageDate = timestamp.toLocaleDateString("default", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+        });
+        const messageTime = timestamp.toLocaleTimeString();
+
+        message.timestamp =
+          currentDay === messageDate ? messageTime : messageDate;
 
         return {
           id: item._id,
@@ -51,7 +67,7 @@ const Chats = () => {
                       item.message.userId === userId ? "You: " : ""
                     }${item.message.content}`}</Styled.Message>
                     <Styled.Timestamp>
-                      {new Date(item.message.timestamp).toLocaleTimeString()}
+                      {item.message.timestamp}
                     </Styled.Timestamp>
                   </>
                 )}
