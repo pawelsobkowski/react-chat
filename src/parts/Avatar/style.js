@@ -8,7 +8,6 @@ const Img = styled.img`
   width: ${(props) => (props.size ? `${props.size}px` : `${avatarSize}px`)};
   height: ${(props) => (props.size ? `${props.size}px` : `${avatarSize}px`)};
   border-radius: 100%;
-  margin-right: 1em;
 `;
 
 const UserIcon = styled(Icon)`
@@ -17,7 +16,6 @@ const UserIcon = styled(Icon)`
   stroke: ${COLORS.backgroundColor};
   background-color: ${COLORS.googleButtonColor};
   border-radius: 100%;
-  margin-right: 1em;
 `;
 
 const Styled = {
