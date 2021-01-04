@@ -61,7 +61,7 @@ const Contacts = () => {
       ? friends.map((item) => (
           <Styled.ListElement key={item._id}>
             <Avatar photoUrl={item.photoUrl} />
-            {item.fullName}
+            <Styled.Name>{item.fullName}</Styled.Name>
           </Styled.ListElement>
         ))
       : "No friends";
@@ -71,7 +71,7 @@ const Contacts = () => {
       ? invitations.map((item) => (
           <Styled.ListElement key={item._id}>
             <Avatar photoUrl={item.photoUrl} />
-            {item.fullName}
+            <Styled.Name>{item.fullName}</Styled.Name>
             <Styled.AcceptIcon
               onClick={() => acceptInvitation(item._id, userId)}
             />

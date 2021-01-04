@@ -34,6 +34,10 @@ const ListElement = styled.li`
   }
 `;
 
+const Name = styled.span`
+  margin-left: 1em;
+`;
+
 const Button = styled.button`
   border: none;
   background-color: transparent;
@@ -46,6 +50,7 @@ const Styled = {
   SearchContainer,
   List,
   ListElement,
+  Name,
   Button,
 };
 

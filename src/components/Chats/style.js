@@ -60,6 +60,7 @@ const Timestamp = styled.span`
 
 const ChatInfoSection = styled.section`
   width: 100%;
+  margin-left: 1em;
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-rows: auto;

@@ -34,6 +34,10 @@ const ListElement = styled.li`
   }
 `;
 
+const Name = styled.span`
+  margin-left: 1em;
+`;
+
 const Section = styled.section`
   width: 100%;
   margin: 0.5em 0;
@@ -68,6 +72,7 @@ const Styled = {
   Container,
   List,
   ListElement,
+  Name,
   Section,
   SectionHeader,
   SectionHeaderTitle,

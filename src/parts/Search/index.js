@@ -43,7 +43,7 @@ const Search = ({ results }) => {
       ? results.map((item) => (
           <Styled.ListElement key={item._id}>
             <Avatar photoUrl={item.photoUrl} />
-            {item.fullName}
+            <Styled.Name>{item.fullName}</Styled.Name>
             {!item.isFriend &&
               (isContainsId(item._id) ? (
                 <Styled.Button
