@@ -48,11 +48,6 @@ const Chats = () => {
     fetchChats();
   }, [userId]);
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    history.push("/");
-  };
-
   const showChats = () =>
     chats.length > 0
       ? chats.map((item) => (
@@ -78,7 +73,7 @@ const Chats = () => {
       : "Lack of messages";
   return (
     <Styled.Container>
-      <Header title={"Messages"} logout={logout} />
+      <Header title={"Messages"} />
       <Styled.List>{chats === null ? "Loading..." : showChats()}</Styled.List>
 
       <Navigation />

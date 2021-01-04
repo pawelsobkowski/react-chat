@@ -4,7 +4,7 @@ import Search from "../Search";
 import axios from "axios";
 import parseJwt from "../../functions/parseJWT";
 
-const Header = ({ title, logout }) => {
+const Header = ({ title }) => {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const { userId } = parseJwt();
@@ -21,7 +21,6 @@ const Header = ({ title, logout }) => {
     <Styled.Header>
       <Styled.TopSection>
         <Styled.Title>{title}</Styled.Title>
-        <button onClick={logout}>Logout</button>
       </Styled.TopSection>
       <Styled.SearchBar isSearchActive={isSearchActive}>
         <Styled.SearchIcon />

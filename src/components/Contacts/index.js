@@ -33,11 +33,6 @@ const Contacts = () => {
     fetchInvitations(userId).then(setInvitations);
   }, [userId]);
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    history.push("/");
-  };
-
   const acceptInvitation = async (id, userId) => {
     const res = await axios.put(`http://localhost:3001/acceptInvitation`, {
       id,
@@ -83,7 +78,7 @@ const Contacts = () => {
       : "No invitations";
   return (
     <Styled.Container>
-      <Header title={"Contacts"} logout={logout} />
+      <Header title={"Contacts"} />
       <Styled.Section>
         <Styled.SectionHeader
           onClick={() =>
