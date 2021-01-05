@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import Avatar from "../../parts/Avatar";
 import Styled from "../Profile/style";
 import { useHistory } from "react-router-dom";
+import parseJwt from "../../functions/parseJWT";
 
 const Profile = () => {
   const history = useHistory();
+  const { userId } = parseJwt();
 
   const goBack = () => {
     history.goBack();
