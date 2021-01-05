@@ -8,6 +8,7 @@ const Img = styled.img`
   width: ${(props) => (props.size ? `${props.size}px` : `${avatarSize}px`)};
   height: ${(props) => (props.size ? `${props.size}px` : `${avatarSize}px`)};
   border-radius: 100%;
+  display: ${(props) => (props.isLoaded ? "block" : "none")};
 `;
 
 const UserIcon = styled(Icon)`
