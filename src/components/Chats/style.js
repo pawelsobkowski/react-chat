@@ -10,6 +10,12 @@ const Container = styled.div`
   justify-content: flex-start;
   align-items: center;
   padding: 0;
+  position: relative;
+
+  @media (min-width: 1024px) {
+    width: 35%;
+    border-right: 1px solid ${COLORS.borderColor};
+  }
 `;
 
 const List = styled.ul`

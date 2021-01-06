@@ -10,6 +10,13 @@ const Container = styled.div`
   align-items: center;
   padding: 0;
   overflow: hidden;
+  position: relative;
+  background-color: ${COLORS.backgroundColor};
+
+  @media (max-width: 1024px) {
+    position: absolute;
+    z-index: 5;
+  }
 `;
 
 const List = styled.ul`
