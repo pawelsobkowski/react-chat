@@ -7,7 +7,7 @@ import Avatar from "../../parts/Avatar";
 import axios from "axios";
 import parseJwt from "../../functions/parseJWT";
 
-const Chats = () => {
+const Chats = ({ setUserToChat }) => {
   const history = useHistory();
   const [chats, setChats] = useState(null);
   const { userId } = parseJwt();
@@ -52,7 +52,7 @@ const Chats = () => {
     chats.length > 0
       ? chats.map((item) => (
           <Styled.ListElement key={item.id}>
-            <Styled.LinkToChat to={`m/${item.id}`}>
+            <Styled.LinkToChat onClick={() => setUserToChat(item.id)}>
               <Avatar photoUrl={item.person.photoUrl} />
               <Styled.ChatInfoSection>
                 <Styled.UserName>{item.person.fullName}</Styled.UserName>
