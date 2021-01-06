@@ -7,7 +7,7 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   backdrop-filter: blur(5px);

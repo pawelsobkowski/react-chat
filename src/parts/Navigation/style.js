@@ -5,7 +5,8 @@ import { MessageCircle, Users, User } from "react-feather";
 const Navigation = styled.nav`
   width: 100%;
   height: 80px;
-  position: fixed;
+  position: absolute;
+  left: 0;
   bottom: 0;
   display: flex;
   justify-content: center;
