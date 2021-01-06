@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import COLORS from "../../colors";
-import { Link } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -24,22 +23,18 @@ const List = styled.ul`
 
 const ListElement = styled.li`
   width: 100%;
-  &:first-child {
-    margin-top: 0;
-  }
-  &:last-child {
-    margin-bottom: 0;
-  }
-`;
-
-const LinkToChat = styled(Link)`
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0.5em 0;
   text-decoration: none;
   color: ${COLORS.black087};
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 const UserName = styled.span`
@@ -78,7 +73,6 @@ const Styled = {
   Message,
   Timestamp,
   ChatInfoSection,
-  LinkToChat,
 };
 
 export default Styled;

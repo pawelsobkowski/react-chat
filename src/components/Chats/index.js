@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import Styled from "./style";
 import Header from "../../parts/Header";
 import Navigation from "../../parts/Navigation";
@@ -8,7 +7,6 @@ import axios from "axios";
 import parseJwt from "../../functions/parseJWT";
 
 const Chats = ({ openChat, changeView }) => {
-  const history = useHistory();
   const [chats, setChats] = useState(null);
   const { userId } = parseJwt();
 
@@ -51,23 +49,19 @@ const Chats = ({ openChat, changeView }) => {
   const showChats = () =>
     chats.length > 0
       ? chats.map((item) => (
-          <Styled.ListElement key={item.id}>
-            <Styled.LinkToChat onClick={() => openChat(item.id)}>
-              <Avatar photoUrl={item.person.photoUrl} />
-              <Styled.ChatInfoSection>
-                <Styled.UserName>{item.person.fullName}</Styled.UserName>
-                {item.message !== undefined && (
-                  <>
-                    <Styled.Message>{`${
-                      item.message.userId === userId ? "You: " : ""
-                    }${item.message.content}`}</Styled.Message>
-                    <Styled.Timestamp>
-                      {item.message.timestamp}
-                    </Styled.Timestamp>
-                  </>
-                )}
-              </Styled.ChatInfoSection>
-            </Styled.LinkToChat>
+          <Styled.ListElement key={item.id} onClick={() => openChat(item.id)}>
+            <Avatar photoUrl={item.person.photoUrl} />
+            <Styled.ChatInfoSection>
+              <Styled.UserName>{item.person.fullName}</Styled.UserName>
+              {item.message !== undefined && (
+                <>
+                  <Styled.Message>{`${
+                    item.message.userId === userId ? "You: " : ""
+                  }${item.message.content}`}</Styled.Message>
+                  <Styled.Timestamp>{item.message.timestamp}</Styled.Timestamp>
+                </>
+              )}
+            </Styled.ChatInfoSection>
           </Styled.ListElement>
         ))
       : "Lack of messages";
