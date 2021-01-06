@@ -9,6 +9,7 @@ import Contacts from "./components/Contacts";
 import ChatRoom from "./components/ChatRoom";
 import Profile from "./components/Profile";
 import Styled from "./sharedStyles/appStyle";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   const [loginView, setLoginView] = useState("signUp");
@@ -24,10 +25,11 @@ function App() {
             )}
           </Styled.Section>
         </AuthRoute>
-        <ProtectedRoute exact path="/chats" component={Chats} />
+        <ProtectedRoute exact path="/dashboard" component={Dashboard} />
+        {/* <ProtectedRoute exact path="/chats" component={Chats} />
         <ProtectedRoute exact path="/contacts" component={Contacts} />
         <ProtectedRoute exact path="/m/:id" component={ChatRoom} />
-        <ProtectedRoute exact path="/profile" component={Profile} />
+        <ProtectedRoute exact path="/profile" component={Profile} /> */}
       </Switch>
     </HashRouter>
   );
