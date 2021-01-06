@@ -1,15 +1,15 @@
 import React from "react";
 import Styled from "./style";
 
-const Navigation = ({ changeView }) => {
+const Navigation = ({ changeView, currentView }) => {
   return (
     <Styled.Navigation>
       <Styled.List>
         <Styled.Element onClick={() => changeView("chats")}>
-          <Styled.ChatsIcon />
+          <Styled.ChatsIcon currentView={currentView === "chats"} />
         </Styled.Element>
         <Styled.Element onClick={() => changeView("contacts")}>
-          <Styled.PeopleIcon />
+          <Styled.PeopleIcon currentView={currentView === "contacts"} />
         </Styled.Element>
         <Styled.Element onClick={() => changeView("profile")}>
           <Styled.AvatarIcon />

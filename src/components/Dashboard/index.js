@@ -22,10 +22,16 @@ const Dashboard = () => {
           <Chats
             openChat={(id) => openChat(id)}
             changeView={(name) => setSideView(name)}
+            currentView={sideView}
           />
         );
       case "contacts":
-        return <Contacts changeView={(name) => setSideView(name)} />;
+        return (
+          <Contacts
+            changeView={(name) => setSideView(name)}
+            currentView={sideView}
+          />
+        );
       case "profile":
         return <Profile changeView={(name) => setSideView(name)} />;
       default:

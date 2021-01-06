@@ -30,19 +30,33 @@ const Element = styled.li`
 const ChatsIcon = styled(MessageCircle)`
   width: 32px;
   height: 32px;
-  stroke: ${COLORS.black063};
+  stroke: ${(props) =>
+    props.currentView ? COLORS.primaryColor : COLORS.black063};
+
+  &:hover {
+    opacity: 0.5;
+  }
 `;
 
 const PeopleIcon = styled(Users)`
   width: 32px;
   height: 32px;
-  stroke: ${COLORS.black063};
+  stroke: ${(props) =>
+    props.currentView ? COLORS.primaryColor : COLORS.black063};
+
+  &:hover {
+    opacity: 0.5;
+  }
 `;
 
 const AvatarIcon = styled(User)`
   width: 32px;
   height: 32px;
   stroke: ${COLORS.black063};
+
+  &:hover {
+    opacity: 0.5;
+  }
 `;
 
 const Styled = {
