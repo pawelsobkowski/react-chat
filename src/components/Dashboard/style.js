@@ -9,6 +9,15 @@ const Container = styled.main`
   align-items: center;
 `;
 
+const SideSection = styled.div`
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    flex: 1 1 0;
+    border-right: 1px solid ${COLORS.borderColor};
+  }
+`;
+
 const ChatPlaceholder = styled.div`
   display: none;
   flex: 3 1 0;
@@ -28,6 +37,7 @@ const MessageCircleIcon = styled(MessageCircle)`
 
 const Styled = {
   Container,
+  SideSection,
   ChatPlaceholder,
   MessageCircleIcon,
 };

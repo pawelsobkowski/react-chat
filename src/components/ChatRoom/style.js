@@ -10,12 +10,13 @@ const Container = styled.div`
   align-items: center;
   padding: 0;
   overflow: hidden;
-  position: relative;
+  position: absolute;
   background-color: ${COLORS.backgroundColor};
+  z-index: 5;
 
-  @media (max-width: 1024px) {
-    position: absolute;
-    z-index: 5;
+  @media (min-width: 1024px) {
+    flex: 3 1 0;
+    position: relative;
   }
 `;
 
