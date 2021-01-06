@@ -44,7 +44,7 @@ const SignIn = ({ changeLoginView }) => {
           values
         );
         localStorage.setItem("token", res.data.token);
-        history.push("/chats");
+        history.push("/dashboard");
       } catch (err) {
         setError(err.response.data.message);
         setIsSubmit(false);
