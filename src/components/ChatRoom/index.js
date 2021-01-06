@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import ChatHeader from "../../parts/ChatHeader";
 import MessageInput from "../../parts/MessageInput";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import parseJwt from "../../functions/parseJWT";
 import Styled from "./style";

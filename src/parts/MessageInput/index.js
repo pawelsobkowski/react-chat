@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Styled from "./style";
 import { ArrowUp } from "react-feather";
 import axios from "axios";

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import Styled from "./style";
 import Header from "../../parts/Header";
 import Navigation from "../../parts/Navigation";
@@ -18,7 +17,6 @@ const fetchInvitations = async (userId) => {
 };
 
 const Contacts = ({ changeView, currentView }) => {
-  const history = useHistory();
   const [friends, setFriends] = useState(null);
   const [invitations, setInvitations] = useState(null);
   const { userId } = parseJwt();

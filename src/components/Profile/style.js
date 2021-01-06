@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import COLORS from "../../colors";
-import { ChevronRight, Delete, Lock, LogOut, Trash, User } from "react-feather";
+import { ChevronRight, Lock, LogOut, Trash, User } from "react-feather";
 
 const iconSize = 36;
 
