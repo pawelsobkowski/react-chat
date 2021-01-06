@@ -5,12 +5,21 @@ import Styled from "./style";
 
 const Dashboard = () => {
   const [userToChat, setUserToChat] = useState(null);
-  console.log(userToChat);
+  const [isActive, setIsActive] = useState(false);
+
+  const openChat = (id) => {
+    setUserToChat(id);
+    setIsActive(true);
+  };
+
   return (
     <Styled.Container>
-      <Chats setUserToChat={(id) => setUserToChat(id)} />
-      {userToChat ? (
-        <ChatRoom userToChat={userToChat} />
+      <Chats openChat={(id) => openChat(id)} />
+      {userToChat && isActive ? (
+        <ChatRoom
+          userToChat={userToChat}
+          closeChat={() => setIsActive(false)}
+        />
       ) : (
         <Styled.MessageCircleIcon />
       )}

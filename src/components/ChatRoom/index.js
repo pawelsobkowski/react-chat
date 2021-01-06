@@ -9,7 +9,7 @@ import io from "socket.io-client";
 
 let socket;
 
-const ChatRoom = ({ userToChat }) => {
+const ChatRoom = ({ userToChat, closeChat }) => {
   const [messages, setMessages] = useState([]);
   const [participants, setParticipants] = useState([]);
   const id = userToChat;
@@ -83,7 +83,7 @@ const ChatRoom = ({ userToChat }) => {
 
   return (
     <Styled.Container>
-      <ChatHeader title={getFriendName()} />
+      <ChatHeader title={getFriendName()} closeChat={closeChat} />
       <Styled.List ref={listRef}>
         {messages === null ? "Loading..." : showMessages()}
       </Styled.List>
