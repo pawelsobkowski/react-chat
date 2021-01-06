@@ -7,7 +7,7 @@ import Avatar from "../../parts/Avatar";
 import axios from "axios";
 import parseJwt from "../../functions/parseJWT";
 
-const Chats = ({ openChat }) => {
+const Chats = ({ openChat, changeView }) => {
   const history = useHistory();
   const [chats, setChats] = useState(null);
   const { userId } = parseJwt();
@@ -76,7 +76,7 @@ const Chats = ({ openChat }) => {
       <Header title={"Messages"} />
       <Styled.List>{chats === null ? "Loading..." : showChats()}</Styled.List>
 
-      <Navigation />
+      <Navigation changeView={changeView} />
     </Styled.Container>
   );
 };

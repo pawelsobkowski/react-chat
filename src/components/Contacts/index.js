@@ -17,7 +17,7 @@ const fetchInvitations = async (userId) => {
   return res.data.invitations;
 };
 
-const Contacts = () => {
+const Contacts = ({ changeView }) => {
   const history = useHistory();
   const [friends, setFriends] = useState(null);
   const [invitations, setInvitations] = useState(null);
@@ -106,7 +106,7 @@ const Contacts = () => {
         )}
       </Styled.Section>
 
-      <Navigation />
+      <Navigation changeView={changeView} />
     </Styled.Container>
   );
 };
