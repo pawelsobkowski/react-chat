@@ -13,27 +13,15 @@ const Chats = ({ openChat, changeView, currentView }) => {
   useEffect(() => {
     const fetchChats = async () => {
       const res = await axios.get(`http://localhost:3001/chat/user/${userId}`);
-      const chatList = res.data.map((item) => {
+      const rawChatList = res.data.map((item) => {
         const [person] = item.participants.filter(
           (user) => user._id !== userId
         );
         const [message] = item.messages.slice(-1);
-        const currentDate = new Date();
-        const currentDay = currentDate.toLocaleDateString("default", {
-          day: "2-digit",
-          month: "2-digit",
-          year: "numeric",
-        });
-        const timestamp = new Date(message.timestamp);
-        const messageDate = timestamp.toLocaleDateString("default", {
-          day: "2-digit",
-          month: "2-digit",
-          year: "numeric",
-        });
-        const messageTime = timestamp.toLocaleTimeString();
 
-        message.timestamp =
-          currentDay === messageDate ? messageTime : messageDate;
+        const timestamp = new Date(message.timestamp);
+
+        message.timestamp = timestamp;
 
         return {
           id: item._id,
@@ -41,6 +29,44 @@ const Chats = ({ openChat, changeView, currentView }) => {
           message,
         };
       });
+
+      const sortedChatList = rawChatList.sort(
+        (a, b) => b.message.timestamp - a.message.timestamp
+      );
+
+      const chatList = sortedChatList.map((item) => {
+        const currentDate = new Date();
+        const currentDay = currentDate.toLocaleDateString("default", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+        });
+        const messageDate = item.message.timestamp.toLocaleString("default", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+        });
+
+        const messageTime = item.message.timestamp.toLocaleTimeString(
+          "default",
+          {
+            hour: "2-digit",
+            minute: "2-digit",
+          }
+        );
+
+        const resultTimestamp =
+          currentDay === messageDate ? messageTime : messageDate;
+
+        return {
+          ...item,
+          message: {
+            ...item.message,
+            timestamp: resultTimestamp,
+          },
+        };
+      });
+      console.log(chatList);
       setChats(chatList);
     };
     fetchChats();
