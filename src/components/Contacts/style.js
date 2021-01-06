@@ -10,6 +10,7 @@ const Container = styled.div`
   justify-content: flex-start;
   align-items: center;
   padding: 0;
+  position: relative;
 `;
 
 const List = styled.ul`
