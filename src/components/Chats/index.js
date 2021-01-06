@@ -66,7 +66,6 @@ const Chats = ({ openChat, changeView, currentView }) => {
           },
         };
       });
-      console.log(chatList);
       setChats(chatList);
     };
     fetchChats();
