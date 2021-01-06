@@ -21,6 +21,7 @@ const HeaderButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: 0;
+  cursor: pointer;
 `;
 
 const Title = styled.h3`
