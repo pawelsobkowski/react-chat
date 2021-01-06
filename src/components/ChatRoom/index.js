@@ -9,10 +9,10 @@ import io from "socket.io-client";
 
 let socket;
 
-const ChatRoom = () => {
+const ChatRoom = ({ userToChat }) => {
   const [messages, setMessages] = useState([]);
   const [participants, setParticipants] = useState([]);
-  const { id } = useParams();
+  const id = userToChat;
   const { userId } = parseJwt();
   const listRef = useRef(null);
   const ENDPOINT = "http://localhost:3001";
@@ -25,7 +25,7 @@ const ChatRoom = () => {
       setParticipants(result.participants);
     };
     fetchMessages();
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     socket = io(ENDPOINT);
