@@ -10,14 +10,10 @@ const fetchData = async (userId) => {
   return res.data.fullName;
 };
 
-const Profile = () => {
+const Profile = ({ changeView }) => {
   const history = useHistory();
   const { userId } = parseJwt();
   const [name, setName] = useState("");
-
-  const goBack = () => {
-    history.goBack();
-  };
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -32,7 +28,7 @@ const Profile = () => {
     <Styled.Container>
       <Styled.Header>
         <Styled.Title>Profile</Styled.Title>
-        <Styled.Close onClick={goBack}>Done</Styled.Close>
+        <Styled.Close onClick={() => changeView("chats")}>Done</Styled.Close>
       </Styled.Header>
       <Avatar
         photoUrl={"https://source.unsplash.com/128x128/?people"}
