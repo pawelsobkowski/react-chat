@@ -8,6 +8,7 @@ import Chats from "./components/Chats";
 import Contacts from "./components/Contacts";
 import ChatRoom from "./components/ChatRoom";
 import Profile from "./components/Profile";
+import Styled from "./sharedStyles/appStyle";
 
 function App() {
   const [loginView, setLoginView] = useState("signUp");
@@ -15,11 +16,13 @@ function App() {
     <HashRouter>
       <Switch>
         <AuthRoute exact path="/">
-          {loginView === "signUp" ? (
-            <SignUp changeLoginView={() => setLoginView("signIn")} />
-          ) : (
-            <SignIn changeLoginView={() => setLoginView("signUp")} />
-          )}
+          <Styled.Section>
+            {loginView === "signUp" ? (
+              <SignUp changeLoginView={() => setLoginView("signIn")} />
+            ) : (
+              <SignIn changeLoginView={() => setLoginView("signUp")} />
+            )}
+          </Styled.Section>
         </AuthRoute>
         <ProtectedRoute exact path="/chats" component={Chats} />
         <ProtectedRoute exact path="/contacts" component={Contacts} />
