@@ -5,7 +5,7 @@ const AuthRoute = ({ children, ...rest }) => (
   <Route
     {...rest}
     render={(props) =>
-      localStorage.getItem("token") ? <Redirect to="/chats" /> : children
+      localStorage.getItem("token") ? <Redirect to="/dashboard" /> : children
     }
   />
 );
