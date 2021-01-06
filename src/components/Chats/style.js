@@ -16,7 +16,7 @@ const List = styled.ul`
   width: 100%;
   list-style: none;
   margin: 0;
-  padding: 0.5em 1em;
+  padding: 0.5em 0.5em;
   display: flex;
   flex-direction: column;
 `;
@@ -26,14 +26,21 @@ const ListElement = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0.5em 0;
   text-decoration: none;
   color: ${COLORS.black087};
+  padding: 0.5em;
+  border-radius: 10px;
+  cursor: pointer;
+
   &:first-child {
     margin-top: 0;
   }
   &:last-child {
     margin-bottom: 0;
+  }
+
+  &:hover {
+    background-color: ${COLORS.hoverColor};
   }
 `;
 
