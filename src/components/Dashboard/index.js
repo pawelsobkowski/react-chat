@@ -21,7 +21,9 @@ const Dashboard = () => {
           closeChat={() => setIsActive(false)}
         />
       ) : (
-        <Styled.MessageCircleIcon />
+        <Styled.ChatPlaceholder>
+          <Styled.MessageCircleIcon />
+        </Styled.ChatPlaceholder>
       )}
     </Styled.Container>
   );

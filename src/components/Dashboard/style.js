@@ -9,20 +9,26 @@ const Container = styled.main`
   align-items: center;
 `;
 
+const ChatPlaceholder = styled.div`
+  display: none;
+  flex: 3 1 0;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 1024px) {
+    display: flex;
+  }
+`;
+
 const MessageCircleIcon = styled(MessageCircle)`
   width: 20%;
   height: 20%;
-  margin: auto;
   color: ${COLORS.googleButtonColor};
-  display: none;
-
-  @media (min-width: 1024px) {
-    display: block;
-  }
 `;
 
 const Styled = {
   Container,
+  ChatPlaceholder,
   MessageCircleIcon,
 };
 
