@@ -4,6 +4,8 @@ import Styled from "../Profile/style";
 import { useHistory } from "react-router-dom";
 import parseJwt from "../../functions/parseJWT";
 import axios from "axios";
+import PersonalInfoForm from "../PersonalInfoForm";
+import PasswordForm from "../PasswordForm";
 
 const fetchData = async (userId) => {
   const res = await axios.get(`http://localhost:3001/users/${userId}`);
@@ -14,6 +16,10 @@ const Profile = ({ changeView }) => {
   const history = useHistory();
   const { userId } = parseJwt();
   const [name, setName] = useState("");
+  const [settingsView, setSettingsView] = useState({
+    name: "",
+    isActive: false,
+  });
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -37,12 +43,16 @@ const Profile = ({ changeView }) => {
       <Styled.Name>{name && name}</Styled.Name>
       <Styled.List>
         <Styled.SectionTitle>Account</Styled.SectionTitle>
-        <Styled.ListElement>
+        <Styled.ListElement
+          onClick={() =>
+            setSettingsView({ name: "personalInfo", isActive: true })
+          }>
           <Styled.PersonIcon />
           <Styled.Option>Personal info</Styled.Option>
           <Styled.ChevronRightIcon />
         </Styled.ListElement>
-        <Styled.ListElement>
+        <Styled.ListElement
+          onClick={() => setSettingsView({ name: "password", isActive: true })}>
           <Styled.LockIcon />
           <Styled.Option>Password</Styled.Option>
           <Styled.ChevronRightIcon />
@@ -58,6 +68,16 @@ const Profile = ({ changeView }) => {
           <Styled.ChevronRightIcon />
         </Styled.ListElement>
       </Styled.List>
+      {settingsView.name === "personalInfo" && settingsView.isActive && (
+        <PersonalInfoForm
+          closeSection={() => setSettingsView({ name: "", isActive: false })}
+        />
+      )}
+      {settingsView.name === "password" && settingsView.isActive && (
+        <PasswordForm
+          closeSection={() => setSettingsView({ name: "", isActive: false })}
+        />
+      )}
     </Styled.Container>
   );
 };
