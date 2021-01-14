@@ -72,6 +72,10 @@ const ChatInfoSection = styled.section`
     "message timestamp";
 `;
 
+const Placeholder = styled.span`
+  align-self: center;
+`;
+
 const Styled = {
   Container,
   List,
@@ -80,6 +84,7 @@ const Styled = {
   Message,
   Timestamp,
   ChatInfoSection,
+  Placeholder,
 };
 
 export default Styled;

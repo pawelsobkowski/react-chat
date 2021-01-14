@@ -72,24 +72,26 @@ const Chats = ({ openChat, changeView, currentView }) => {
   }, [userId]);
 
   const showChats = () =>
-    chats.length > 0
-      ? chats.map((item) => (
-          <Styled.ListElement key={item.id} onClick={() => openChat(item.id)}>
-            <Avatar photoUrl={item.person.photoUrl} />
-            <Styled.ChatInfoSection>
-              <Styled.UserName>{item.person.fullName}</Styled.UserName>
-              {item.message !== undefined && (
-                <>
-                  <Styled.Message>{`${
-                    item.message.userId === userId ? "You: " : ""
-                  }${item.message.content}`}</Styled.Message>
-                  <Styled.Timestamp>{item.message.timestamp}</Styled.Timestamp>
-                </>
-              )}
-            </Styled.ChatInfoSection>
-          </Styled.ListElement>
-        ))
-      : "Lack of messages";
+    chats.length > 0 ? (
+      chats.map((item) => (
+        <Styled.ListElement key={item.id} onClick={() => openChat(item.id)}>
+          <Avatar photoUrl={item.person.photoUrl} />
+          <Styled.ChatInfoSection>
+            <Styled.UserName>{item.person.fullName}</Styled.UserName>
+            {item.message !== undefined && (
+              <>
+                <Styled.Message>{`${
+                  item.message.userId === userId ? "You: " : ""
+                }${item.message.content}`}</Styled.Message>
+                <Styled.Timestamp>{item.message.timestamp}</Styled.Timestamp>
+              </>
+            )}
+          </Styled.ChatInfoSection>
+        </Styled.ListElement>
+      ))
+    ) : (
+      <Styled.Placeholder>Lack of messages</Styled.Placeholder>
+    );
   return (
     <Styled.Container>
       <Header title={"Messages"} />
