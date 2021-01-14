@@ -14,6 +14,7 @@ const COLORS = {
   accountColorIcon: "#15e1d5",
   deleteColorIcon: "#e11515",
   neutralColorIcon: "#c1c7c9",
+  approveColor: "#32CD32",
 };
 
 export default COLORS;
