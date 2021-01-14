@@ -6,10 +6,17 @@ import parseJwt from "../../functions/parseJWT";
 import axios from "axios";
 import PersonalInfoForm from "../PersonalInfoForm";
 import PasswordForm from "../PasswordForm";
+import ConfirmDialog from "../../parts/ConfirmDialog";
 
 const fetchData = async (userId) => {
   const res = await axios.get(`http://localhost:3001/users/${userId}`);
   return res.data.fullName;
+};
+
+const deleteUser = async (userId, logout) => {
+  const res = await axios.delete(`http://localhost:3001/users/${userId}`);
+  logout();
+  console.log(res);
 };
 
 const Profile = ({ changeView }) => {
@@ -57,7 +64,8 @@ const Profile = ({ changeView }) => {
           <Styled.Option>Password</Styled.Option>
           <Styled.ChevronRightIcon />
         </Styled.ListElement>
-        <Styled.ListElement>
+        <Styled.ListElement
+          onClick={() => setSettingsView({ name: "delete", isActive: true })}>
           <Styled.DeleteIcon />
           <Styled.Option>Delete Account</Styled.Option>
           <Styled.ChevronRightIcon />
@@ -76,6 +84,13 @@ const Profile = ({ changeView }) => {
       {settingsView.name === "password" && settingsView.isActive && (
         <PasswordForm
           closeSection={() => setSettingsView({ name: "", isActive: false })}
+        />
+      )}
+      {settingsView.name === "delete" && settingsView.isActive && (
+        <ConfirmDialog
+          text={"Are you sure, you want to delete this account?"}
+          closeDialog={() => setSettingsView({ name: "", isActive: false })}
+          action={() => deleteUser(userId, logout)}
         />
       )}
     </Styled.Container>
