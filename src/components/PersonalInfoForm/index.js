@@ -11,9 +11,12 @@ const fetchUserInfo = async (userId) => {
 };
 
 const PersonalInfoForm = ({ closeSection }) => {
-  const [error, setError] = useState("");
   const [user, setUser] = useState({ email: "", fullName: "" });
   const { userId } = parseJwt();
+  const [resultMessage, setResultMessage] = useState({
+    message: "",
+    statusCode: "",
+  });
 
   useEffect(() => {
     fetchUserInfo(userId).then(setUser);
@@ -41,14 +44,39 @@ const PersonalInfoForm = ({ closeSection }) => {
     validate,
     onSubmit: async (values) => {
       try {
-        setError("");
+        setResultMessage({
+          message: "",
+          statusCode: "",
+        });
         const res = await axios.put(
           `http://localhost:3001/users/${userId}`,
           values
         );
-        console.log(res);
+        setResultMessage({
+          message: res.data.message,
+          statusCode: res.status,
+        });
+        setTimeout(
+          () =>
+            setResultMessage({
+              message: "",
+              statusCode: "",
+            }),
+          3000
+        );
       } catch (err) {
-        setError(err.response.data.message);
+        setResultMessage({
+          message: err.response.data.message,
+          statusCode: err.response.status,
+        });
+        setTimeout(
+          () =>
+            setResultMessage({
+              message: "",
+              statusCode: "",
+            }),
+          3000
+        );
       }
     },
   });
@@ -97,7 +125,11 @@ const PersonalInfoForm = ({ closeSection }) => {
             <Styled.ErrorMessage>{formik.errors.fullName}</Styled.ErrorMessage>
           ) : null}
         </Styled.InputContainer>
-        {error && <Styled.ErrorMessage>{error}</Styled.ErrorMessage>}
+        {resultMessage.message && (
+          <Styled.ResultMessage statusCode={resultMessage.statusCode}>
+            {resultMessage.message}
+          </Styled.ResultMessage>
+        )}
       </Styled.Form>
     </Styled.Container>
   );

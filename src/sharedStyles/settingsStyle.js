@@ -24,6 +24,21 @@ const Form = styled.form`
   margin: 2em 0;
 `;
 
+const ResultMessage = styled.div`
+  width: fit-content;
+  padding: 1em 2em;
+  color: ${COLORS.backgroundColor};
+  background-color: ${(props) =>
+    props.statusCode === 200 ? COLORS.approveColor : COLORS.error};
+  border-radius: 1em;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 1.1em;
+`;
+
 const Styled = {
   Container,
   Form,
@@ -31,6 +46,7 @@ const Styled = {
   Label,
   Input,
   ErrorMessage,
+  ResultMessage,
 };
 
 export default Styled;

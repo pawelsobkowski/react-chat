@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Styled from "../../sharedStyles/settingsStyle";
 import SettingsHeader from "../../parts/SettingsHeader";
 import { useFormik } from "formik";
@@ -6,8 +6,11 @@ import axios from "axios";
 import parseJwt from "../../functions/parseJWT";
 
 const PasswordForm = ({ closeSection }) => {
-  const [error, setError] = useState("");
   const { userId } = parseJwt();
+  const [resultMessage, setResultMessage] = useState({
+    message: "",
+    statusCode: "",
+  });
 
   const validate = (values) => {
     const errors = {};
@@ -35,14 +38,39 @@ const PasswordForm = ({ closeSection }) => {
     validate,
     onSubmit: async (values) => {
       try {
-        setError("");
+        setResultMessage({
+          message: "",
+          statusCode: "",
+        });
         const res = await axios.put(
           `http://localhost:3001/users/${userId}`,
           values
         );
-        console.log(res);
+        setResultMessage({
+          message: res.data.message,
+          statusCode: res.status,
+        });
+        setTimeout(
+          () =>
+            setResultMessage({
+              message: "",
+              statusCode: "",
+            }),
+          3000
+        );
       } catch (err) {
-        setError(err.response.data.message);
+        setResultMessage({
+          message: err.response.data.message,
+          statusCode: err.response.status,
+        });
+        setTimeout(
+          () =>
+            setResultMessage({
+              message: "",
+              statusCode: "",
+            }),
+          3000
+        );
       }
     },
   });
@@ -101,7 +129,11 @@ const PasswordForm = ({ closeSection }) => {
             <Styled.ErrorMessage>{formik.errors.password}</Styled.ErrorMessage>
           ) : null}
         </Styled.InputContainer>
-        {error && <Styled.ErrorMessage>{error}</Styled.ErrorMessage>}
+        {resultMessage.message && (
+          <Styled.ResultMessage statusCode={resultMessage.statusCode}>
+            {resultMessage.message}
+          </Styled.ResultMessage>
+        )}
       </Styled.Form>
     </Styled.Container>
   );
