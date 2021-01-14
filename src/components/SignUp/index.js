@@ -45,7 +45,8 @@ const SignUp = ({ changeLoginView }) => {
           "http://localhost:3001/auth/signUp",
           values
         );
-        console.log(res);
+        res.status && setIsSubmit(false);
+        changeLoginView();
       } catch (err) {
         console.log(err.response);
         setError(err.response.data.errors[0].msg);
