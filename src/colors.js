@@ -8,7 +8,7 @@ const COLORS = {
   lightPrimaryColor: "#0ECFFA",
   googleButtonColor: "#CDCDCD",
   error: "#CC0000",
-  transparentBgColor: "rgba(250,250,250,0.67)",
+  transparentBgColor: "rgba(250,250,250,0.8)",
   transparentSearchBgColor: "rgba(230,230,230,0.87)",
   hoverColor: "#f6f6f6",
   accountColorIcon: "#15e1d5",
